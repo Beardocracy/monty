@@ -16,6 +16,7 @@ void push_op(stack_t **head, unsigned int line_number)
 	if (new == NULL)
 	{
 		perror("Error: malloc failed\n");
+		free_everything();
 		exit(EXIT_FAILURE);
 	}
 	if (get_global()->values == NULL)
@@ -49,5 +50,59 @@ void pall_op(stack_t **stack, unsigned int line_number)
 	{
 		printf("%d\n", head->n);
 		head = head->next;
+	}
+}
+
+/**
+ * nop_op - does nothing.
+ * @head: pointer to a stack_t struct.
+ * @line_number: the line of the file we are in.
+ */
+void nop_op(stack_t **head, unsigned int line_number)
+{
+	(void)head;
+	(void)line_number;
+}
+
+/**
+ * pint_op - prints the value at the top of the stack.
+ * @head: pointer to a stack_t struct.
+ * @line_number: the line of the file we are in.
+ */
+void pint_op(stack_t **head, unsigned int line_number)
+{
+	(void)head;
+	(void)line_number;
+
+	if (*head == NULL)
+	{
+		printf("L%d: can't pint, stack empty\n", line_number);
+		free_everything();
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", get_global()->top->n);
+}
+
+/**
+ * pop_op - rempoves the node at the top of the stack.
+ * @head: pointer to a stack_t struct.
+ * @line_number: the line of the file we are in.
+ */
+void pop_op(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp;
+	(void)line_number;
+
+	if (*head != NULL)
+	{
+		temp = (*head)->next;
+		free(*head);
+		get_global()->top = temp;
+	}
+	if (*head == NULL)
+	{
+		printf("L%d: can't pop an empty stack\n", line_number);
+		free_everything();
+		exit(EXIT_FAILURE);
 	}
 }

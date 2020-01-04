@@ -8,14 +8,18 @@ void (*get_instructions(void))(stack_t **, unsigned int)
 {
 	char *command = get_global()->command;
 	unsigned int i;
-	instruction_t instructs[3] = {
+	instruction_t instructs[] = {
 		{"push", push_op},
 		{"pall", pall_op},
-/*		{"pint", pint_op},
+		{"nop", nop_op},
+		{"pint", pint_op},
 		{"pop", pop_op},
 		{"swap", swap_op},
 		{"add", add_op},
-		{"nop", nop_op},  */
+		{"sub", sub_op},
+		{"div", div_op},
+		{"mul", mul_op},
+		{"mod", mod_op},
 		{NULL, NULL}
 	};
 
