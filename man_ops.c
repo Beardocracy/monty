@@ -10,6 +10,7 @@ void push_op(stack_t **head, unsigned int line_number)
 	stack_t *new;
 	unsigned int val, i;
 	char *val_string;
+	(void)line_number;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -29,13 +30,17 @@ void push_op(stack_t **head, unsigned int line_number)
 	new->n = val;
 	new->next = *head;
 	*head = new;
-	
-	return;
 }
 
+/**
+ * pall_op - prints all the values on the stack, starting from the top.
+ * @stack: pointer to the top of the stack.
+ * @line_number: the current line number in the file.
+ */
 void pall_op(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head;
+	(void)line_number;
 
 	if (*stack == NULL)
 		return;
@@ -45,5 +50,4 @@ void pall_op(stack_t **stack, unsigned int line_number)
 		printf("%d\n", head->n);
 		head = head->next;
 	}
-	return;
 }

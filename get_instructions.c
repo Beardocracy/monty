@@ -24,6 +24,6 @@ void (*get_instructions(void))(stack_t **, unsigned int)
 		if (strcmp(command, instructs[i].opcode) == 0)
 			return (instructs[i].f);
 	}
-	
+
 	return (NULL);
 }
