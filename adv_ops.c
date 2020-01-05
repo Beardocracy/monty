@@ -57,7 +57,7 @@ void pchar_op(stack_t **head, unsigned int line_number)
 }
 
 /**
- * pstr - prints the string startign at the top of the stack, followed by NL.
+ * pstr_op - prints the string from at the top of the stack, followed by NL.
  * @head: pointer to the head of the stack
  * @line_number: the line of the file.
  */
@@ -78,4 +78,30 @@ void pstr_op(stack_t **head, unsigned int line_number)
 		printf("%c", n);
 	}
 	printf("\n");
+}
+
+/**
+ * rotl_op - Moves the top element to the back.
+ * @head: pointer to the head of the stack
+ * @line_number: the line of the file.
+ */
+void rotl_op(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp, *tail;
+	(void)line_number;
+
+	if (*head == NULL || (*head)->next == NULL)
+		nop_op(head, line_number);
+	else
+	{
+		temp = *head;
+		tail = temp;
+		*head = (*head)->next;
+		(*head)->prev = NULL;
+		while (tail->next)
+			tail = tail->next;
+		tail->next = temp;
+		temp->prev = tail;
+		temp->next = NULL;
+	}
 }
