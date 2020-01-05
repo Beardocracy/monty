@@ -15,17 +15,23 @@ void push_op(stack_t **head, unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		perror("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_everything();
 		exit(EXIT_FAILURE);
 	}
 	if (get_global()->values == NULL)
+	{
+		free(new);
 		e_value();
+	}
 	val_string = get_global()->values;
 	for (i = 0; val_string[i]; i++)
 	{
 		if (val_string[i] < '0' || val_string[i] > '9')
+		{
+			free(new);
 			e_value();
+		}
 	}
 	val = atoi(val_string);
 	new->n = val;
@@ -76,7 +82,7 @@ void pint_op(stack_t **head, unsigned int line_number)
 
 	if (*head == NULL)
 	{
-		printf("L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_everything();
 		exit(EXIT_FAILURE);
 	}
@@ -101,7 +107,8 @@ void pop_op(stack_t **head, unsigned int line_number)
 	}
 	if (*head == NULL)
 	{
-		printf("L%d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n",
+				line_number);
 		free_everything();
 		exit(EXIT_FAILURE);
 	}

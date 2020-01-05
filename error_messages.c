@@ -5,8 +5,8 @@
  */
 void e_instructions(void)
 {
-	printf("L%u: unkown instruction %s\n", get_global()->line_number,
-			get_global()->command);
+	fprintf(stderr, "L%u: unkown instruction %s\n",
+			get_global()->line_number, get_global()->command);
 	free(get_global()->command);
 	exit(EXIT_FAILURE);
 }
@@ -16,7 +16,8 @@ void e_instructions(void)
  */
 void e_value(void)
 {
-	printf("L%u: usage: push integer\n", get_global()->line_number);
+	fprintf(stderr, "L%u: usage: push integer\n",
+			get_global()->line_number);
 	free_everything();
 	exit(EXIT_FAILURE);
 }
