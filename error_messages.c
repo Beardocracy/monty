@@ -17,6 +17,6 @@ void e_instructions(void)
 void e_value(void)
 {
 	printf("L%u: usage: push integer\n", get_global()->line_number);
-	free(get_global()->command);
+	free_everything();
 	exit(EXIT_FAILURE);
 }

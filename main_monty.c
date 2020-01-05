@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	monty_file = fopen(argv[1], "r");
 	if (monty_file == NULL)
 	{
-		printf("Error: Can't open file %s\n", argv[1]);
+		perror("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	get_global()->fd = monty_file;
