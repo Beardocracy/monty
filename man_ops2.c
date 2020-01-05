@@ -112,7 +112,7 @@ void mul_op(stack_t **head, unsigned int line_number)
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n",
+		fprintf(stderr, "L%d: can't mul, stack too short\n",
 				line_number);
 		free_everything();
 		exit(EXIT_FAILURE);
