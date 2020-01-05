@@ -5,9 +5,9 @@
  */
 void e_instructions(void)
 {
-	fprintf(stderr, "L%u: unkown instruction %s\n",
+	fprintf(stderr, "L%u: unknown instruction %s\n",
 			get_global()->line_number, get_global()->command);
-	free(get_global()->command);
+	free_everything();
 	exit(EXIT_FAILURE);
 }
 
