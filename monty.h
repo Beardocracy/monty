@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -41,11 +42,13 @@ typedef struct instruction_s
 typedef struct global_s
 {
 	unsigned int line_number;
+	FILE *fd;
 	struct stack_s *top;
 	struct stack_s *bottom;
 	struct instruction_s *instructs;
 	char *command;
 	char *values;
+	char *line_save;
 
 } global_t;
 
@@ -56,5 +59,15 @@ void pall_op(stack_t **stack, unsigned int line_number);
 void e_instructions(void);
 void e_value(void);
 void remove_newlines(char *s);
+void free_everything(void);
+void nop_op(stack_t **head, unsigned int line_number);
+void pint_op(stack_t **head, unsigned int line_number);
+void pop_op(stack_t **head, unsigned int line_number);
+void swap_op(stack_t **head, unsigned int line_number);
+void add_op(stack_t **head, unsigned int line_number);
+void sub_op(stack_t **head, unsigned int line_number);
+void div_op(stack_t **head, unsigned int line_number);
+void mul_op(stack_t **head, unsigned int line_number);
+void mod_op(stack_t **head, unsigned int line_number);
 
 #endif
