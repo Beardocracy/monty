@@ -27,7 +27,8 @@ void push_op(stack_t **head, unsigned int line_number)
 	val_string = get_global()->values;
 	for (i = 0; val_string[i]; i++)
 	{
-		if (val_string[i] < '0' || val_string[i] > '9')
+		if ((val_string[i] < '0' || val_string[i] > '9')
+				&& val_string[i] != '-')
 		{
 			free(new);
 			e_value();
