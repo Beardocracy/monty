@@ -8,7 +8,7 @@ global_t *get_global(void)
 {
 	static global_t global = {
 		0,
-		NULL,
+		0,
 		NULL,
 		NULL,
 		NULL,

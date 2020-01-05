@@ -42,9 +42,9 @@ typedef struct instruction_s
 typedef struct global_s
 {
 	unsigned int line_number;
+	int queue;
 	FILE *fd;
 	struct stack_s *top;
-	struct stack_s *bottom;
 	struct instruction_s *instructs;
 	char *command;
 	char *values;
@@ -73,5 +73,7 @@ void pchar_op(stack_t **head, unsigned int line_number);
 void pstr_op(stack_t **head, unsigned int line_number);
 void rotl_op(stack_t **head, unsigned int line_number);
 void rotr_op(stack_t **head, unsigned int line_number);
+void stack_op(stack_t **head, unsigned int line_number);
+void queue_op(stack_t **head, unsigned int line_number);
 
 #endif

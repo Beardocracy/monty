@@ -41,6 +41,8 @@ void push_op(stack_t **head, unsigned int line_number)
 	if (*head)
 		(*head)->prev = new;
 	*head = new;
+	if (get_global()->queue)
+		rotl_op(head, line_number);
 }
 
 /**
