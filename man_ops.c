@@ -98,19 +98,18 @@ void pint_op(stack_t **head, unsigned int line_number)
 void pop_op(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp;
-	(void)line_number;
 
-	if (*head != NULL)
-	{
-		temp = (*head)->next;
-		free(*head);
-		get_global()->top = temp;
-	}
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n",
 				line_number);
 		free_everything();
 		exit(EXIT_FAILURE);
+	}
+	if (*head != NULL)
+	{
+		temp = (*head)->next;
+		free(*head);
+		*head = temp;
 	}
 }
