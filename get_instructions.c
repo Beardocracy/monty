@@ -6,7 +6,7 @@
  */
 void (*get_instructions(void))(stack_t **, unsigned int)
 {
-	char *command = get_global()->command;
+	char *command;
 	unsigned int i;
 	instruction_t instructs[] = {
 		{"push", push_op},
@@ -23,11 +23,18 @@ void (*get_instructions(void))(stack_t **, unsigned int)
 		{NULL, NULL}
 	};
 
-	for (i = 0; instructs[i].opcode != NULL; i++)
+	if (get_global()->command == NULL)
 	{
-		if (strcmp(command, instructs[i].opcode) == 0)
-			return (instructs[i].f);
+		return (nop_op);
 	}
-
+	else
+	{
+		command = get_global()->command;
+		for (i = 0; instructs[i].opcode != NULL; i++)
+		{
+			if (strcmp(command, instructs[i].opcode) == 0)
+				return (instructs[i].f);
+		}
+	}
 	return (NULL);
 }
