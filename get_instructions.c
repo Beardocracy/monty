@@ -23,6 +23,7 @@ void (*get_instructions(void))(stack_t **, unsigned int)
 		{"pchar", pchar_op},
 		{"pstr", pstr_op},
 		{"rotl", rotl_op},
+		{"rotr", rotr_op},
 		{NULL, NULL}
 	};
 

@@ -105,3 +105,27 @@ void rotl_op(stack_t **head, unsigned int line_number)
 		temp->next = NULL;
 	}
 }
+/**
+ * rotr_op - Moves the last element to the top.
+ * @head: pointer to the head of the stack
+ * @line_number: the line of the file.
+ */
+void rotr_op(stack_t **head, unsigned int line_number)
+{
+	stack_t *tail, *temp;
+	(void)line_number;
+
+	if (*head == NULL || (*head)->next == NULL)
+		nop_op(head, line_number);
+	else
+	{
+		tail = *head;
+		while (tail->next)
+			tail = tail->next;
+		temp = tail->prev;
+		temp->next = NULL;
+		tail->next = *head;
+		(*head)->prev = tail;
+		*head = tail;
+	}
+}

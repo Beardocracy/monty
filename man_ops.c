@@ -37,6 +37,9 @@ void push_op(stack_t **head, unsigned int line_number)
 	val = atoi(val_string);
 	new->n = val;
 	new->next = *head;
+	new->prev = NULL;
+	if (*head)
+		(*head)->prev = new;
 	*head = new;
 }
 
