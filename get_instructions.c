@@ -30,6 +30,8 @@ void (*get_instructions(void))(stack_t **, unsigned int)
 	else
 	{
 		command = get_global()->command;
+		if (command[0] == '#')
+			return (nop_op);
 		for (i = 0; instructs[i].opcode != NULL; i++)
 		{
 			if (strcmp(command, instructs[i].opcode) == 0)
