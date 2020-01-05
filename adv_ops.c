@@ -55,3 +55,27 @@ void pchar_op(stack_t **head, unsigned int line_number)
 	}
 	printf("%c\n", n);
 }
+
+/**
+ * pstr - prints the string startign at the top of the stack, followed by NL.
+ * @head: pointer to the head of the stack
+ * @line_number: the line of the file.
+ */
+void pstr_op(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp;
+	int n;
+	(void)line_number;
+
+	if (*head != NULL)
+		temp = *head;
+	while (temp != NULL)
+	{
+		n = temp->n;
+		temp = temp->next;
+		if (n < 1 || n > 127)
+			break;
+		printf("%c", n);
+	}
+	printf("\n");
+}
