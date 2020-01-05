@@ -20,6 +20,7 @@ void (*get_instructions(void))(stack_t **, unsigned int)
 		{"div", div_op},
 		{"mul", mul_op},
 		{"mod", mod_op},
+		{"pchar", pchar_op},
 		{NULL, NULL}
 	};
 

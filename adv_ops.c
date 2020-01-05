@@ -28,3 +28,30 @@ void mod_op(stack_t **head, unsigned int line_number)
 	free(*head);
 	*head = temp;
 }
+
+/**
+ * pchar_op - prints the n value in the top node of the stack as ascii, if ok.
+ * @head: pointer to the head of the stack
+ * @line_number: the line of the file.
+ */
+void pchar_op(stack_t **head, unsigned int line_number)
+{
+	int n;
+
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n",
+				line_number);
+		free_everything();
+		exit(EXIT_FAILURE);
+	}
+	n = (*head)->n;
+	if (n < 0 || n > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n",
+				line_number);
+		free_everything();
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", n);
+}
